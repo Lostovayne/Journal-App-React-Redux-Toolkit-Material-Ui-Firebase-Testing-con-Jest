@@ -1,18 +1,23 @@
 import { Google } from "@mui/icons-material";
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
+import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "./../../hooks";
-import { useDispatch } from "react-redux";
-import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
 
 export const LoginPage = () => {
-    const dispatch = useDispatch();
+    const { status } = useSelector((state) => state.auth);
 
+    const dispatch = useDispatch();
     const { email, password, onInputChange } = useForm({
         email: "epsaind@gmail.com",
         password: "123456",
     });
+
+    // Disabled buttons if status is equal to checking
+    const isAuthenticating = useMemo(() => status === "checking", [status]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,7 +26,6 @@ export const LoginPage = () => {
     };
 
     const onGoogleSignIn = () => {
-        console.log("On google sign in");
         dispatch(startGoogleSignIn());
     };
 
@@ -62,6 +66,7 @@ export const LoginPage = () => {
                                 fullWidth
                                 sx={{ py: 1 }}
                                 type="submit"
+                                disabled={isAuthenticating}
                             >
                                 Login
                             </Button>
@@ -73,6 +78,7 @@ export const LoginPage = () => {
                                 fullWidth
                                 sx={{ py: 1 }}
                                 onClick={onGoogleSignIn}
+                                disabled={isAuthenticating}
                             >
                                 <Google />
                                 <Typography sx={{ ml: 1 }}>Google</Typography>

@@ -37,7 +37,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
             const [fn, errorMessage] = formValidations[formField];
             formCheckedValues[`${formField}Valid`] = fn(formState[formField]) ? null : errorMessage;
             setformValidation(formCheckedValues);
-            console.log(formCheckedValues);
         }
     };
 

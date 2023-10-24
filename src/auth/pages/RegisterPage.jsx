@@ -2,6 +2,7 @@ import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
+import { useState } from "react";
 
 const formData = {
     email: "epsaind@gmail.com",
@@ -16,6 +17,8 @@ const formValidations = {
 };
 
 export const RegisterPage = () => {
+    const [formSubmitted, setformSubmitted] = useState(false);
+
     const {
         formState,
         displayName,
@@ -28,11 +31,10 @@ export const RegisterPage = () => {
         passwordValid,
     } = useForm(formData, formValidations);
 
-    // console.log(displayNameValid);
-
     const onSubmit = (event) => {
         event.preventDefault();
-        // console.log(formState);
+        setformSubmitted(true);
+        console.log(formState);
     };
 
     return (
@@ -51,7 +53,7 @@ export const RegisterPage = () => {
                             name="displayName"
                             value={displayName}
                             onChange={onInputChange}
-                            error={!!displayNameValid}
+                            error={!!displayNameValid && formSubmitted}
                             helperText={displayNameValid}
                         />
                     </Grid>
@@ -66,6 +68,8 @@ export const RegisterPage = () => {
                             name="email"
                             value={email}
                             onChange={onInputChange}
+                            error={!!emailValid && formSubmitted}
+                            helperText={emailValid}
                         />
                     </Grid>
 
@@ -79,6 +83,8 @@ export const RegisterPage = () => {
                             name="password"
                             value={password}
                             onChange={onInputChange}
+                            error={!!passwordValid && formSubmitted}
+                            helperText={passwordValid}
                         />
                     </Grid>
                     <Grid container spacing={2} sx={{ my: 1 }}>

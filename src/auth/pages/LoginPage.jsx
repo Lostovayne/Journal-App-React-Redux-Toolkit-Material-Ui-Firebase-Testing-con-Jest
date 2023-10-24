@@ -11,6 +11,7 @@ export const LoginPage = () => {
     const { status } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
+
     const { email, password, onInputChange } = useForm({
         email: "epsaind@gmail.com",
         password: "123456",
@@ -86,17 +87,8 @@ export const LoginPage = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid
-                        container
-                        direction={"row"}
-                        justifyContent="end"
-                        sx={{ mt: 1 }}
-                    >
-                        <Link
-                            component={RouterLink}
-                            color="inherit"
-                            to="/auth/register"
-                        >
+                    <Grid container direction={"row"} justifyContent="end" sx={{ mt: 1 }}>
+                        <Link component={RouterLink} color="inherit" to="/auth/register">
                             create a new account
                         </Link>
                     </Grid>

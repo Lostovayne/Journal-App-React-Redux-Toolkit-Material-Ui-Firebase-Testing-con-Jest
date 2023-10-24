@@ -28,6 +28,8 @@ export const RegisterPage = () => {
         passwordValid,
     } = useForm(formData, formValidations);
 
+    // console.log(displayNameValid);
+
     const onSubmit = (event) => {
         event.preventDefault();
         // console.log(formState);
@@ -35,6 +37,8 @@ export const RegisterPage = () => {
 
     return (
         <AuthLayout title="Register">
+            <h1>FormValid {isFormValid ? "Válido" : " Invalid"} </h1>
+
             <form action="" onSubmit={onSubmit}>
                 <Grid container>
                     <Grid item xs={12} sx={{ mb: 2 }}>
@@ -47,7 +51,7 @@ export const RegisterPage = () => {
                             name="displayName"
                             value={displayName}
                             onChange={onInputChange}
-                            error={!displayNameValid}
+                            error={!!displayNameValid}
                             helperText={displayNameValid}
                         />
                     </Grid>

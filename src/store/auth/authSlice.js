@@ -21,7 +21,6 @@ export const authSlice = createSlice({
         },
 
         logout: (state, { payload }) => {
-            console.log(payload);
             state.status = "not-authenticated";
             state.uid = null;
             state.email = null;
@@ -30,7 +29,7 @@ export const authSlice = createSlice({
             state.errorMessage = payload;
         },
 
-        checkingCredentials: (state, action) => {
+        checkingCredentials: (state) => {
             state.status = "checking";
         },
     },

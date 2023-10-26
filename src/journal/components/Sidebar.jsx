@@ -1,4 +1,5 @@
 import { TurnedInNot } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 import {
     Box,
     Divider,
@@ -15,6 +16,8 @@ import {
 
 // eslint-disable-next-line react/prop-types
 export const Sidebar = ({ drawerWidth }) => {
+    const { displayName } = useSelector((state) => state.auth);
+
     return (
         <Box component={"nav"} sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
             {/* <Drawer variant="temporary" open={false}></Drawer> */}
@@ -28,7 +31,7 @@ export const Sidebar = ({ drawerWidth }) => {
             >
                 <Toolbar>
                     <Typography variant="h6" noWrap component="div">
-                        Epsaind
+                        {displayName}
                     </Typography>
                 </Toolbar>
 

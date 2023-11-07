@@ -14,18 +14,17 @@ const formValidations = {
     password: [(value) => value.length >= 6, "El password debe de tener mas de 6 caracteres"],
 };
 
+const formData = {
+    email: "",
+    password: "",
+};
+
 export const LoginPage = () => {
     const { status, errorMessage } = useSelector((state) => state.auth);
     const [formSubmitted, setformSubmitted] = useState(false);
     const dispatch = useDispatch();
 
-    const { email, password, onInputChange, emailValid, passwordValid } = useForm(
-        {
-            email: "",
-            password: "",
-        },
-        formValidations
-    );
+    const { email, password, onInputChange, emailValid, passwordValid } = useForm(formData, formValidations);
 
     // Disabled buttons if status is equal to checking
     const isAuthenticating = useMemo(() => status === "checking", [status]);

@@ -1,6 +1,6 @@
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
-import { addNewEmpyNote, savingNewNote, setActiveNotes, setNotes } from "./journalSlice";
+import { addNewEmpyNote, savingNewNote, setActiveNotes, setNotes, setSaving, updateNote } from "./journalSlice";
 import { loadNotes } from "../../helpers";
 
 export const startNewNote = () => {
@@ -10,7 +10,7 @@ export const startNewNote = () => {
         const { uid } = getState().auth;
 
         const newNote = {
-            title: "",
+            title: "xd",
             body: "",
             date: new Date().getTime(),
         };
@@ -34,14 +34,14 @@ export const startLoadingNotes = () => {
 
 export const startSaveNote = () => {
     return async (dispatch, getState) => {
+        dispatch(setSaving());
         const { uid } = getState().auth;
         const { active: note } = getState().journal;
         const noteToFireStore = { ...note };
         delete noteToFireStore.id;
-        // console.log(noteToFireStore);
-
+        // Se eliminó el id de la nota ya que la ruta de la nota es incluye dicho id  y no es necesario para la base de datos
         const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
-        const resp = await setDoc(docRef, noteToFireStore, { merge: true });
-        console.log(resp);
+        await setDoc(docRef, noteToFireStore, { merge: true });
+        dispatch(updateNote(note));
     };
 };

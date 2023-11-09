@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { SaveOutlined } from "@mui/icons-material";
 import { Button, Grid, TextField, Typography } from "@mui/material";
+import { useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
+import { setActiveNotes, startSaveNote } from "../../store/journal";
 import { ImageGallery } from "../components";
 import { useForm } from "./../../hooks/useForm";
-import { useDispatch, useSelector } from "react-redux";
-import { useMemo } from "react";
-import { useEffect } from "react";
-import { setActiveNotes, startSaveNote } from "../../store/journal";
 
 export const NoteView = () => {
-    const { active: note } = useSelector((state) => state.journal);
+    const { active: note, messageSaved, isSaving } = useSelector((state) => state.journal);
     const { body, title, date, onInputChange, formState } = useForm(note);
     const dispatch = useDispatch();
 
@@ -21,6 +22,12 @@ export const NoteView = () => {
     useEffect(() => {
         dispatch(setActiveNotes(formState));
     }, [formState]);
+
+    useEffect(() => {
+        if (messageSaved.length > 0) {
+            Swal.fire("Nota actualizada", messageSaved, "success");
+        }
+    }, [messageSaved]);
 
     const onSaveNote = () => {
         dispatch(startSaveNote());
@@ -35,7 +42,7 @@ export const NoteView = () => {
             </Grid>
 
             <Grid item>
-                <Button color="primary" sx={{ p: 2 }} onClick={onSaveNote}>
+                <Button color="primary" sx={{ p: 2 }} onClick={onSaveNote} disabled={isSaving}>
                     <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
                     Guardar
                 </Button>

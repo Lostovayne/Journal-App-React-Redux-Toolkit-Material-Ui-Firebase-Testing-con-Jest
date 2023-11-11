@@ -19,7 +19,7 @@ export const startNewNote = () => {
         const { uid } = getState().auth;
 
         const newNote = {
-            title: "xd",
+            title: "",
             body: "",
             imageUrls: [],
             date: new Date().getTime(),

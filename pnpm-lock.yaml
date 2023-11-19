@@ -12,16 +12,16 @@ dependencies:
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.37)(react@18.2.0)
   '@mui/icons-material':
-    specifier: ^5.14.11
+    specifier: ^5.14.18
     version: 5.14.18(@mui/material@5.14.18)(@types/react@18.2.37)(react@18.2.0)
   '@mui/material':
-    specifier: ^5.14.11
+    specifier: ^5.14.18
     version: 5.14.18(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
   '@reduxjs/toolkit':
     specifier: ^1.9.7
     version: 1.9.7(react-redux@8.1.3)(react@18.2.0)
   firebase:
-    specifier: ^10.5.0
+    specifier: ^10.6.0
     version: 10.6.0
   react:
     specifier: ^18.2.0
@@ -33,10 +33,10 @@ dependencies:
     specifier: ^8.1.3
     version: 8.1.3(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
   react-router-dom:
-    specifier: ^6.16.0
+    specifier: ^6.19.0
     version: 6.19.0(react-dom@18.2.0)(react@18.2.0)
   sweetalert2:
-    specifier: ^11.9.0
+    specifier: ^11.10.0
     version: 11.10.0
 
 devDependencies:
@@ -47,34 +47,34 @@ devDependencies:
     specifier: ^7.23.3
     version: 7.23.3(@babel/core@7.23.3)
   '@testing-library/react':
-    specifier: ^14.1.0
+    specifier: ^14.1.2
     version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
   '@types/jest':
     specifier: ^29.5.8
     version: 29.5.8
   '@types/react':
-    specifier: ^18.2.15
+    specifier: ^18.2.37
     version: 18.2.37
   '@types/react-dom':
-    specifier: ^18.2.7
+    specifier: ^18.2.15
     version: 18.2.15
   '@vitejs/plugin-react':
-    specifier: ^4.0.3
+    specifier: ^4.2.0
     version: 4.2.0(vite@4.5.0)
   babel-jest:
     specifier: ^29.7.0
     version: 29.7.0(@babel/core@7.23.3)
   eslint:
-    specifier: ^8.45.0
+    specifier: ^8.54.0
     version: 8.54.0
   eslint-plugin-react:
-    specifier: ^7.32.2
+    specifier: ^7.33.2
     version: 7.33.2(eslint@8.54.0)
   eslint-plugin-react-hooks:
     specifier: ^4.6.0
     version: 4.6.0(eslint@8.54.0)
   eslint-plugin-react-refresh:
-    specifier: ^0.4.3
+    specifier: ^0.4.4
     version: 0.4.4(eslint@8.54.0)
   jest:
     specifier: ^29.7.0
@@ -83,7 +83,7 @@ devDependencies:
     specifier: ^29.7.0
     version: 29.7.0
   vite:
-    specifier: ^4.4.5
+    specifier: ^4.5.0
     version: 4.5.0
   whatwg-fetch:
     specifier: ^3.6.19
